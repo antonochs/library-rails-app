@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    Rails.logger.info request.inspect
     @users = User.all
   end
 

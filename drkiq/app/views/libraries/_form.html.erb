@@ -1,10 +1,10 @@
-<%= form_with(model: user, local: true) do |form| %>
-  <% if user.errors.any? %>
+<%= form_with(model: library, local: true) do |form| %>
+  <% if library.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <h2><%= pluralize(library.errors.count, "error") %> prohibited this library from being saved:</h2>
 
       <ul>
-        <% user.errors.full_messages.each do |message| %>
+        <% library.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
@@ -17,8 +17,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :email %>
-    <%= form.email_field :email %>
+    <%= form.label :location %>
+    <%= form.text_field :location %>
   </div>
 
   <div class="actions">
