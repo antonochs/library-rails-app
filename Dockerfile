@@ -25,4 +25,3 @@ RUN rails webpacker:install
 RUN chown -R user:user /opt/app
 USER $USER_ID
 VOLUME ["$INSTALL_PATH/public"]
-CMD bundle exec unicorn -c config/unicorn.rb
