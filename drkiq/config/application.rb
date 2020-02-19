@@ -37,6 +37,7 @@ module Drkiq
     # If you've never dealt with background workers before, this is the Rails
     # way to use them through Active Job. We just need to tell it to use Sidekiq.
     config.active_job.queue_adapter = :sidekiq
+    config.action_controller.forgery_protection_origin_check = false
 
     # ...
   end

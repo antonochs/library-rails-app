@@ -20,6 +20,7 @@ RUN gem install rails bundler
 COPY drkiq/Gemfile Gemfile
 WORKDIR /opt/app/drkiq
 RUN bundle install
+RUN rails webpacker:install
 
 RUN chown -R user:user /opt/app
 USER $USER_ID
