@@ -20,5 +20,12 @@
   <%= @book.description %>
 </p>
 
+<p>
+  <strong>Genres</strong>
+  <% for genre in @book.genres %>
+    <%= genre.name %>
+  <% end %>
+</p>
+
 <%= link_to 'Edit', edit_book_path(@book) %> |
 <%= link_to 'Back', books_path %>

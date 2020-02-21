@@ -61,6 +61,16 @@ class BooksController < ApplicationController
     end
   end
 
+  # GET /genre_search
+  def genre_search
+    @books = Book.all
+    if params[:genres]
+      for genre in params[:genres]
+        @books = Book.filter_book_by_genre(genre)
+      end
+    end
+
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_book
@@ -69,6 +79,6 @@ class BooksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def book_params
-      params.require(:book).permit(:name, :author, :return_by, :description)
+      params.require(:book).permit(:name, :author, :return_by, :description, genre_ids: [])
     end
 end

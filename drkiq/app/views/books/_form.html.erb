@@ -31,6 +31,12 @@
     <%= form.text_field :description %>
   </div>
 
+  <%= form.label :genres %><br />
+    <% for genre in Genre.all %>
+      <%= check_box_tag "book[genre_ids][]", genre.id, book.genres.include?(genre) %>
+      <%=h genre.name %><br />
+    <% end %>
+
   <div class="actions">
     <%= form.submit %>
   </div>

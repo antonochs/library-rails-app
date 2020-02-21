@@ -1,14 +1,14 @@
 In this app I should:
 - register
 - select a library (location)
-- see all available books
+- see all available books (done)
 - "rent" a book for a certain duration
-- see when a book should be back
-- each book should be link[ed] to one or multiple genres
+- see when a book should be back (done)
+- each book should be link[ed] to one or multiple genres (done)
 - search book by genre
 
 Requirements:
 - pushed on Github with a really [detailed] Readme to understand how it works
-- have a dockerfile or docker compose or Vagrant file to start the project
-- database: postgres or mysql
+- have a dockerfile or docker compose or Vagrant file to start the project (done)
+- database: postgres or mysql (done)
 - front end: not ugly please! Something simple like Bootstrap is enough - no need to do single app, a classic MVC / "template" app is enough

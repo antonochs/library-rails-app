@@ -1,6 +1,11 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Books</h1>
+<%= form_tag(genre_search_books_path, method: :get) do %>
+    <% for genre in Genre.all %>
+      <%= check_box_tag("genres[]", genre.id) %>
+      <%=h genre.name %><br />
+    <% end %>
+    <%= submit_tag("Filter")%>
+<% end %>
 
 <table>
   <thead>
@@ -26,15 +31,7 @@
                <%= genre.name %>
             <% end %>
         </td>
-        <td><%= link_to 'Show', book %></td>
-        <td><%= link_to 'Edit', edit_book_path(book) %></td>
-        <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Book', new_book_path %>
-<%= link_to 'Genre Search', genre_search_books_path %>

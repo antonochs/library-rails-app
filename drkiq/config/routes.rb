@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :books
+  resources :books do
+    collection do
+      get 'genre_search'
+    end
+  end
   resources :libraries
   resources :genres
   resources :users
