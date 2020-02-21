@@ -63,10 +63,12 @@ class BooksController < ApplicationController
 
   # GET /genre_search
   def genre_search
-    @books = Book.all
+    @all_books = Book.all
+    @books = Book.where(nil)
     if params[:genres]
       for genre in params[:genres]
-        @books = Book.filter_book_by_genre(genre)
+        print @books, "books_search_uni"
+        @books = @all_books.filter_book_by_genre(genre) & @books
       end
     end
 
