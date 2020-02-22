@@ -24,8 +24,9 @@ class BooksController < ApplicationController
   # POST /books
   # POST /books.json
   def create
-    @book = Book.new(book_params)
 
+    @book = Book.new(book_params)
+    # @book.library = @library
     respond_to do |format|
       if @book.save
         format.html { redirect_to @book, notice: 'Book was successfully created.' }
@@ -41,6 +42,7 @@ class BooksController < ApplicationController
   # PATCH/PUT /books/1.json
   def update
     respond_to do |format|
+      # @book.libraries_id = @library.id
       if @book.update(book_params)
         format.html { redirect_to @book, notice: 'Book was successfully updated.' }
         format.json { render :show, status: :ok, location: @book }
@@ -67,13 +69,13 @@ class BooksController < ApplicationController
     @books = Book.where(nil)
     if params[:genres]
       for genre in params[:genres]
-        print @books, "books_search_uni"
         @books = @all_books.filter_book_by_genre(genre) & @books
       end
     end
 
   end
   private
+    
     # Use callbacks to share common setup or constraints between actions.
     def set_book
       @book = Book.find(params[:id])
@@ -81,6 +83,7 @@ class BooksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def book_params
-      params.require(:book).permit(:name, :author, :return_by, :description, genre_ids: [])
+      print "new params", params
+      params.require(:book).permit(:name, :author, :return_by, :library_id, :description, genre_ids: [])
     end
 end

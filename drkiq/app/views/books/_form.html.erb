@@ -37,6 +37,9 @@
       <%=h genre.name %><br />
     <% end %>
 
+  <%= form.label :library %>
+    <%= form.collection_select :library_id, Library.all, :id, :name%>
+
   <div class="actions">
     <%= form.submit %>
   </div>

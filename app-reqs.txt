@@ -5,7 +5,7 @@ In this app I should:
 - "rent" a book for a certain duration
 - see when a book should be back (done)
 - each book should be link[ed] to one or multiple genres (done)
-- search book by genre
+- search book by genre (done)
 
 Requirements:
 - pushed on Github with a really [detailed] Readme to understand how it works

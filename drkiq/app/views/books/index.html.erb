@@ -9,7 +9,9 @@
       <th>Author</th>
       <th>Return by</th>
       <th>Description</th>
-      <th>Genre(s)<th>
+      <th>Genre(s)</th>
+      <th>Library</th>
+      <th>Library Location</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -26,6 +28,8 @@
                <%= genre.name %>
             <% end %>
         </td>
+        <td><%= book.library.name %></td>
+        <td><%= book.library.location %></td>
         <td><%= link_to 'Show', book %></td>
         <td><%= link_to 'Edit', edit_book_path(book) %></td>
         <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
