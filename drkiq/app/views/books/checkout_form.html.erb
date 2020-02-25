@@ -1,0 +1,29 @@
+<h4> Checkout Form </h4>
+
+<%= form_with scope: :book, url: checkout_book_book_path do |form| %>
+  <% if @book.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h2>
+
+      <ul>
+        <% @book.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    Checking out book: <%= @book.name %>
+    <div class="field">
+      <%= form.label :username %>
+      <%= form.text_field :username %>
+    </div>
+
+    <div class="field">
+      <%= form.label :return_by %>
+      <%= form.datetime_select :return_by %>
+    </div>
+
+    <%= form.submit("Checkout Book")%>
+<% end %>
+

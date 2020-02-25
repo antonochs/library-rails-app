@@ -33,7 +33,7 @@
         <td><%= book.library.location %></td>
         <% if book.availability%>
         <td>Available for checkout </td>
-        <td><%= link_to 'Checkout', book %></td>
+        <td><%= link_to 'Checkout',  checkout_form_book_path(book) %></td>
         <% else %>
         <td>Not Available </td>
         <% end %>

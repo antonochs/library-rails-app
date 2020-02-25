@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   resources :books do
     collection do
       get 'genre_search'
+    end
+    member do
       get 'checkout_form'
       post 'checkout_book'
     end

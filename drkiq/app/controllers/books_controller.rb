@@ -1,6 +1,5 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_book, only: [:show, :edit, :update, :destroy, :checkout_book, :checkout_form]
   # GET /books
   # GET /books.json
   def index
@@ -80,15 +79,41 @@ class BooksController < ApplicationController
     end
   end
 
+  #GET /checkout_form
+  def checkout_form
+  end
+
+  # POSt /checkout_book
+  def checkout_book
+    respond_to do |format|
+      if self.find_user
+        puts "this is the user", @user.inspect
+        params[:book][:user_id] = @user.id
+        params[:book].delete :username
+        if @book.update(book_params)
+          format.html { redirect_to @book, notice: 'Book was successfully reserved.' }
+          format.json { render :show, status: :ok, location: @book }
+        else
+          format.html { render :checkout_form }
+          format.json { render json: @book.errors, status: :unprocessable_entity }
+        end
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_book
       @book = Book.find(params[:id])
     end
 
+    def find_user
+      @user = User.find_by_name(params[:username])[0]
+    end
+
     # Only allow a list of trusted parameters through.
     def book_params
       print "new params", params
-      params.require(:book).permit(:name, :author, :return_by, :library_id, :description, genre_ids: [])
+      params.require(:book).permit(:name, :author, :return_by, :library_id, :user_id, :description, genre_ids: [])
     end
 end
