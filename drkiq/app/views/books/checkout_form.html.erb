@@ -1,6 +1,6 @@
 <h4> Checkout Form </h4>
 
-<%= form_with scope: :book, url: checkout_book_book_path do |form| %>
+<%= form_with model: @book, url: checkout_book_book_path do |form| %>
   <% if @book.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h2>

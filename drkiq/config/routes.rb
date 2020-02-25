@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     end
     member do
       get 'checkout_form'
-      post 'checkout_book'
+      patch 'checkout_book'
     end
   end
   resources :libraries

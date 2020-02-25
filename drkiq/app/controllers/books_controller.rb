@@ -86,8 +86,9 @@ class BooksController < ApplicationController
   # POSt /checkout_book
   def checkout_book
     respond_to do |format|
+      puts "params", params.inspect
       if self.find_user
-        puts "this is the user", @user.inspect
+        puts "this is the user", @user.inspect, params[:book][:username]
         params[:book][:user_id] = @user.id
         params[:book].delete :username
         if @book.update(book_params)
@@ -108,7 +109,7 @@ class BooksController < ApplicationController
     end
 
     def find_user
-      @user = User.find_by_name(params[:username])[0]
+      @user = User.find_user_by_name(params[:book][:username])
     end
 
     # Only allow a list of trusted parameters through.
